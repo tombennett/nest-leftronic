@@ -1,6 +1,6 @@
 <?php
 require_once('nest.class.php');
-
+require_once('Leftronic.php');
 // Parse the config file 
 require 'config.php';
 
