@@ -21,6 +21,9 @@ $time_to_target_timestamp = $infos->target->time_to_target;
 $time_to_target_seconds = $time_to_target_timestamp - time();
 $time_to_target_minutes = $time_to_target_seconds / 60;
 
+if($time_to_target_minutes<0) {
+	$time_to_target_minutes = 0;
+}
 // Wunderground details
 $json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/geolookup/conditions/q/$location");
   $parsed_json = json_decode($json_string);
