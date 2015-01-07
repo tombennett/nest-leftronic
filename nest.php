@@ -11,7 +11,7 @@ $nest = new Nest($username, $password);
 
 echo "Device information:\n";
 $infos = $nest->getDeviceInfo($devices_serials[0]);
-jlog($infos);
+// jlog($infos);
 echo "----------\n\n";
 
 echo "Current temperature:\n";
