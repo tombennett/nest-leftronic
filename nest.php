@@ -16,7 +16,7 @@ $infos = $nest->getDeviceInfo();
 jlog($infos);
 echo "----------\n\n";
 
-$temp_c =  $infos->current_state->temperature, $infos->scale;
+$temp_c =  $infos->current_state->temperature;
 
 echo "Current temperature:\n";
 printf("%.02f degrees %s\n", $temp_c);
