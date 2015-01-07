@@ -34,9 +34,9 @@ echo "current temperature: $temp_current \r\n";
 echo "current target: $temp_target \r\n";
 echo "current outside: $temp_outside \r\n";
 echo "heat on: $heat \r\n";
-echo "time_to_target_timestamp: time_to_target_timestamp \r\n"
-echo "time_to_target_seconds: time_to_target_seconds \r\n"
-echo "time_to_target_minutes: time_to_target_minutes \r\n"
+echo "time_to_target_timestamp: time_to_target_timestamp \r\n";
+echo "time_to_target_seconds: time_to_target_seconds \r\n";
+echo "time_to_target_minutes: time_to_target_minutes \r\n";
 
 // Push information to Leftronic
 $update = new Leftronic($apiKey);
