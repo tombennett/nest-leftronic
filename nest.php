@@ -35,11 +35,16 @@ $update = new Leftronic($apiKey);
 $update->pushNumber("temp_current", $temp_current);
 $update->pushNumber("temp_target", $temp_target);
 $update->pushNumber("temp_outside", $temp_outside);
+$update->pushNumber("temp_current_value", $temp_current);
+$update->pushNumber("temp_target_value", $temp_target);
+$update->pushNumber("temp_outside_value", $temp_outside);
 
 if($heat=="true") {
-	$update->pushNumber("heat_on", 1);
+    $update->pushNumber("heat_on", 1);
+    $update->pushNumber("heat_on_traffic", 1);
 } else {
-	$update->pushNumber("heat_on", 0);
+    $update->pushNumber("heat_on", 0);
+    $update->pushNumber("heat_on_traffic", 0);
 }
 
 $update->pushNumber("time_to_target", $time_to_target_minutes);
