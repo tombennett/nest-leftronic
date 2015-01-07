@@ -30,6 +30,14 @@ $json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/
   $location = $parsed_json->{'location'}->{'city'};
   $temp_outside = $parsed_json->{'current_observation'}->{'temp_c'};
 
+echo "current temperature: $temp_current \r\n";
+echo "current target: $temp_target \r\n";
+echo "current outside: $temp_outside \r\n";
+echo "heat on: $heat \r\n";
+echo "time_to_target_timestamp: time_to_target_timestamp \r\n"
+echo "time_to_target_seconds: time_to_target_seconds \r\n"
+echo "time_to_target_minutes: time_to_target_minutes \r\n"
+
 // Push information to Leftronic
 $update = new Leftronic($apiKey);
 $update->pushNumber("temp_current", $temp_current);
@@ -37,9 +45,9 @@ $update->pushNumber("temp_target", $temp_target);
 $update->pushNumber("temp_outside", $temp_outside);
 
 if($heat=="true") {
-	$update->pushNumber("heat_on", 1);
+    $update->pushNumber("heat_on", 1);
 } else {
-	$update->pushNumber("heat_on", 0);
+    $update->pushNumber("heat_on", 0);
 }
 
 $update->pushNumber("time_to_target", $time_to_target_minutes);
