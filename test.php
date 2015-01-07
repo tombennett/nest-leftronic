@@ -30,6 +30,8 @@ $json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/
   $location = $parsed_json->{'location'}->{'city'};
   $temp_outside = $parsed_json->{'current_observation'}->{'temp_c'};
 
+jlog($infos);
+
 echo "current temperature: $temp_current \r\n";
 echo "current target: $temp_target \r\n";
 echo "current outside: $temp_outside \r\n";
