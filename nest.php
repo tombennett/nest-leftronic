@@ -1,8 +1,12 @@
 <?php
 require_once('nest.class.php');
+
+// Parse the ini file with config details
+$config = parse_ini_file('config.ini');
+
 // Your Nest username and password.
-$username = 'someemail@email.com';
-$password = 'Something other than 1234 right?';
+$username = $config->username;
+$password = $config->password;
 // The timezone you're in.
 // See http://php.net/manual/en/timezones.php for the possible values.
 date_default_timezone_set('Europe/London');
@@ -11,7 +15,7 @@ $nest = new Nest($username, $password);
 
 echo "Device information:\n";
 $infos = $nest->getDeviceInfo($devices_serials[0]);
-// jlog($infos);
+//jlog($infos);
 echo "----------\n\n";
 
 echo "Current temperature:\n";
@@ -21,6 +25,7 @@ echo "----------\n\n";
 
 
 // Push information to Leftronic
-$update = new Leftronic("MY_ACCESS_KEY");
+$apiKey = $config->apiKey
+$update = new Leftronic($apiKey);
 
 $update->pushNumber("myNumberStream", 123456);
