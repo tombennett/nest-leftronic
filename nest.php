@@ -11,10 +11,7 @@ date_default_timezone_set('Europe/London');
 // Here's how to use this class:
 $nest = new Nest($username, $password);
 
-echo "Device information:\n";
 $infos = $nest->getDeviceInfo();
-jlog($infos);
-echo "----------\n\n";
 
 $temp_current =  $infos->current_state->temperature;
 $temp_target = $infos->target->temperature;
@@ -24,7 +21,6 @@ $json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/
   $parsed_json = json_decode($json_string);
   $location = $parsed_json->{'location'}->{'city'};
   $temp_outside = $parsed_json->{'current_observation'}->{'temp_c'};
-  echo "Current temperature in ${location} is: ${temp_outside}\n";
 
 // Push information to Leftronic
 $update = new Leftronic($apiKey);
