@@ -3,7 +3,7 @@ require_once('nest.class.php');
 
 // Parse the ini file with config details
 $config = parse_ini_file('config.ini');
-$echo "$config";
+echo "$config";
 
 // Your Nest username and password.
 $username = $config->username;
