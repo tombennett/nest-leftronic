@@ -19,6 +19,15 @@ echo "----------\n\n";
 $temp_current =  $infos->current_state->temperature;
 $temp_target = $infos->target->temperature;
 
+// Wunderground details
+$json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/geolookup/conditions/q/england/amersham.json");
+  $parsed_json = json_decode($json_string);
+  $location = $parsed_json->{'location'}->{'city'};
+  $temp_f = $parsed_json->{'current_observation'}->{'temp_c'};
+  echo "Current temperature in ${location} is: ${temp_c}\n";
+
+
+
 // Push information to Leftronic
 $update = new Leftronic($apiKey);
 $update->pushNumber("temp_current", $temp_current);
