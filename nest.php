@@ -17,7 +17,7 @@ $temp_current =  $infos->current_state->temperature;
 $temp_target = $infos->target->temperature;
 
 // Wunderground details
-$json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/geolookup/conditions/q/england/amersham.json");
+$json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/geolookup/conditions/q/$location");
   $parsed_json = json_decode($json_string);
   $location = $parsed_json->{'location'}->{'city'};
   $temp_outside = $parsed_json->{'current_observation'}->{'temp_c'};

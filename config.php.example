@@ -9,3 +9,4 @@ $apiKey='SOMEKEY';
 
 // wunderground api key
 $wunderground='SOMEKEY';
+$location='COUNTRY/CITY.json';
