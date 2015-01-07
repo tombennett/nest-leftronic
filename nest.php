@@ -16,20 +16,13 @@ $infos = $nest->getDeviceInfo();
 jlog($infos);
 echo "----------\n\n";
 
-$temp_c =  $infos->current_state->temperature;
-
-echo "Current temperature:\n";
-echo $temp_c;
-//printf("%.02f degrees %s\n", $temp_c);
-echo "----------\n\n";
-
-
+$temp_current =  $infos->current_state->temperature;
+$temp_target = $infos->target->temperature;
 
 // Push information to Leftronic
-echo $apiKey;
 $update = new Leftronic($apiKey);
-
-$update->pushNumber("temp_c", $temp_c);
+$update->pushNumber("temp_current", $temp_current);
+$update->pushNumber("temp_target", $temp_target);
 
 
 /* Helper functions */
