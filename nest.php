@@ -19,7 +19,8 @@ echo "----------\n\n";
 $temp_c =  $infos->current_state->temperature;
 
 echo "Current temperature:\n";
-printf("%.02f degrees %s\n", $temp_c);
+echo $temp_c;
+//printf("%.02f degrees %s\n", $temp_c);
 echo "----------\n\n";
 
 
@@ -28,7 +29,7 @@ echo "----------\n\n";
 echo $apiKey;
 $update = new Leftronic($apiKey);
 
-$update->pushNumber("temp_c", 123456);
+$update->pushNumber("temp_c", $temp_c);
 
 
 /* Helper functions */
