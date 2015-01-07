@@ -15,6 +15,8 @@ $infos = $nest->getDeviceInfo();
 
 $temp_current =  $infos->current_state->temperature;
 $temp_target = $infos->target->temperature;
+$humidity = $infos->current_state->humidity;
+$heat = $infos->current_state->heat;
 
 // Wunderground details
 $json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/geolookup/conditions/q/$location");
@@ -27,6 +29,15 @@ $update = new Leftronic($apiKey);
 $update->pushNumber("temp_current", $temp_current);
 $update->pushNumber("temp_target", $temp_target);
 $update->pushNumber("temp_outside", $temp_outside);
+
+if($heat=="true") {
+	$update->pushNumber("heat_on", 1);
+} else {
+	$update->pushNumber("heat_on", 0);
+}
+
+
+
 
 /* Helper functions */
 function json_format($json) { 
