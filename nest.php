@@ -17,7 +17,9 @@ $temp_current =  $infos->current_state->temperature;
 $temp_target = $infos->target->temperature;
 $humidity = $infos->current_state->humidity;
 $heat = $infos->current_state->heat;
-$time_to_target = $infos->target->time_to_target;
+$time_to_target_timestamp = $infos->target->time_to_target;
+$time_to_target_seconds = $time_to_target_timestamp - time();
+$time_to_target_minutes = $time_to_target_seconds / 60;
 
 // Wunderground details
 $json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/geolookup/conditions/q/$location");
@@ -37,9 +39,7 @@ if($heat=="true") {
 	$update->pushNumber("heat_on", 0);
 }
 
-$update->pushNumber("time_to_target", $time_to_target);
-
-
+$update->pushNumber("time_to_target", $time_to_target_minutes);
 
 /* Helper functions */
 function json_format($json) { 
