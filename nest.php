@@ -25,7 +25,7 @@ echo "----------\n\n";
 
 
 // Push information to Leftronic
-$apiKey = $config->apiKey
+$apiKey = $config->apiKey;
 $update = new Leftronic($apiKey);
 
 $update->pushNumber("myNumberStream", 123456);
