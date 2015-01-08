@@ -50,6 +50,7 @@ $update->pushNumber("temp_outside", $temp_outside);
 $update->pushNumber("temp_current_value", $temp_current);
 $update->pushNumber("temp_target_value", $temp_target);
 $update->pushNumber("temp_outside_value", $temp_outside);
+$update->pushImage("current_observation_image", $current_observation_image);
 
 if($heat=="true") {
     $update->pushNumber("heat_on", 1);
