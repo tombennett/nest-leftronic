@@ -29,12 +29,14 @@ $json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/
   $parsed_json = json_decode($json_string);
   $location = $parsed_json->{'location'}->{'city'};
   $temp_outside = $parsed_json->{'current_observation'}->{'temp_c'};
+  $current_observation_image = $parsed_json->{'current_observation'}->{'icon_url'};
 
 jlog($infos);
 
 echo "current temperature: $temp_current \r\n";
 echo "current target: $temp_target \r\n";
 echo "current outside: $temp_outside \r\n";
+echo "current_observation_image: $current_observation_image \r\n";
 echo "heat on: $heat \r\n";
 echo "time_to_target_timestamp: $time_to_target_timestamp \r\n";
 echo "time_to_target_seconds: $time_to_target_seconds \r\n";
