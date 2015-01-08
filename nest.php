@@ -29,6 +29,7 @@ $json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/
   $parsed_json = json_decode($json_string);
   $location = $parsed_json->{'location'}->{'city'};
   $temp_outside = $parsed_json->{'current_observation'}->{'temp_c'};
+  $current_observation_image = $parsed_json->{'current_observation'}->{'icon_url'};
 
 // Push information to Leftronic
 $update = new Leftronic($apiKey);
@@ -38,6 +39,7 @@ $update->pushNumber("temp_outside", $temp_outside);
 $update->pushNumber("temp_current_value", $temp_current);
 $update->pushNumber("temp_target_value", $temp_target);
 $update->pushNumber("temp_outside_value", $temp_outside);
+$update->pushImage("current_observation_image", $current_observation_image);
 
 if($heat=="true") {
     $update->pushNumber("heat_on", 1);
