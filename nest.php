@@ -9,7 +9,7 @@ require 'config.php';
 // See http://php.net/manual/en/timezones.php for the possible values.
 date_default_timezone_set('Europe/London');
 // Here's how to use this class:
-$nest = new Nest($username, $password);
+$nest = new Nest($nestUsername, $nestPassword);
 
 $infos = $nest->getDeviceInfo();
 
@@ -25,14 +25,14 @@ if($time_to_target_timestamp==0) {
 	$time_to_target_minutes = 0;
 }
 // Wunderground details
-$json_string = file_get_contents("http://api.wunderground.com/api/$wunderground/geolookup/conditions/q/$location");
+$json_string = file_get_contents("http://api.wunderground.com/api/$wundergroundApiKey/geolookup/conditions/q/$wundergroundLocation");
   $parsed_json = json_decode($json_string);
   $location = $parsed_json->{'location'}->{'city'};
   $temp_outside = $parsed_json->{'current_observation'}->{'temp_c'};
   $current_observation_image = $parsed_json->{'current_observation'}->{'icon_url'};
 
 // Push information to Leftronic
-$update = new Leftronic($apiKey);
+$update = new Leftronic($leftronicAccessKey);
 $update->pushNumber("temp_current", $temp_current);
 $update->pushNumber("temp_target", $temp_target);
 $update->pushNumber("temp_outside", $temp_outside);

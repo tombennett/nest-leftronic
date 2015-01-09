@@ -1,12 +1,12 @@
 <?php
 
 // nest
-$username='someusername@emaildomain.com';
-$password='somepassword';
+$nestUsername='someusername@emaildomain.com';
+$nestPassword='somepassword';
 
 // leftronic
-$apiKey='SOMEKEY';
+$leftronicAccessKey='SOMEKEY';
 
 // wunderground api key
-$wunderground='SOMEKEY';
-$location='COUNTRY/CITY.json';
+$wundergroundApiKey='SOMEKEY';
+$wundegroundlocation='COUNTRY/CITY.json';
