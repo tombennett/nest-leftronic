@@ -30,6 +30,7 @@ $json_string = file_get_contents("http://api.wunderground.com/api/$wundergroundA
   $location = $parsed_json->{'location'}->{'city'};
   $temp_outside = $parsed_json->{'current_observation'}->{'temp_c'};
   $humidity_outside = $parsed_json->{'current_observation'}->{'relative_humidity'};
+  $humidity_outside = rtrim($humidity_outside, "%");
   $current_observation_image = $parsed_json->{'current_observation'}->{'icon_url'};
 
 jlog($infos);
