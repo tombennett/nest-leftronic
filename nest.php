@@ -15,7 +15,7 @@ $infos = $nest->getDeviceInfo();
 
 $temp_current =  $infos->current_state->temperature;
 $temp_target = $infos->target->temperature;
-$humidity = $infos->current_state->humidity;
+$humidity_current = $infos->current_state->humidity;
 $heat = $infos->current_state->heat;
 $time_to_target_timestamp = $infos->target->time_to_target;
 $time_to_target_seconds = $time_to_target_timestamp - time();
@@ -29,6 +29,8 @@ $json_string = file_get_contents("http://api.wunderground.com/api/$wundergroundA
   $parsed_json = json_decode($json_string);
   $location = $parsed_json->{'location'}->{'city'};
   $temp_outside = $parsed_json->{'current_observation'}->{'temp_c'};
+  $humidity_outside = $parsed_json->{'current_observation'}->{'relative_humidity'};
+  $humidity_outside = rtrim($humidity_outside, "%");
   $current_observation_image = $parsed_json->{'current_observation'}->{'icon_url'};
 
 // Push information to Leftronic
@@ -39,6 +41,8 @@ $update->pushNumber("temp_outside", $temp_outside);
 $update->pushNumber("temp_current_value", $temp_current);
 $update->pushNumber("temp_target_value", $temp_target);
 $update->pushNumber("temp_outside_value", $temp_outside);
+$update->pushNumber("humidity_inside", $humidity_current);
+$update->pushNumber("humidity_outside", $humidity_outside);
 $update->pushImage("current_observation_image", $current_observation_image);
 
 if($heat=="true") {
