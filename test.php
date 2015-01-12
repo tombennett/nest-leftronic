@@ -15,7 +15,7 @@ $infos = $nest->getDeviceInfo();
 
 $temp_current =  $infos->current_state->temperature;
 $temp_target = $infos->target->temperature;
-$humidity = $infos->current_state->humidity;
+$humidity_current = $infos->current_state->humidity;
 $heat = $infos->current_state->heat;
 $time_to_target_timestamp = $infos->target->time_to_target;
 $time_to_target_seconds = $time_to_target_timestamp - time();
@@ -29,13 +29,16 @@ $json_string = file_get_contents("http://api.wunderground.com/api/$wundergroundA
   $parsed_json = json_decode($json_string);
   $location = $parsed_json->{'location'}->{'city'};
   $temp_outside = $parsed_json->{'current_observation'}->{'temp_c'};
+  $humidity_outside = $parsed_json->{'current_observation'}->{'relative_humidity'};
   $current_observation_image = $parsed_json->{'current_observation'}->{'icon_url'};
 
 jlog($infos);
 
-echo "current temperature: $temp_current \r\n";
-echo "current target: $temp_target \r\n";
-echo "current outside: $temp_outside \r\n";
+echo "current temperature inside: $temp_current \r\n";
+echo "current temperature target: $temp_target \r\n";
+echo "current temperature outside: $temp_outside \r\n";
+echo "current humidity inside: $humidity_current \r\n";
+echo "current humidity outside: $humidity_outside \r\n";
 echo "current_observation_image: $current_observation_image \r\n";
 echo "heat on: $heat \r\n";
 echo "time_to_target_timestamp: $time_to_target_timestamp \r\n";
