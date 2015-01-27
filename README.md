@@ -7,6 +7,7 @@ This is a PHP script to grab heating data from Nest and local weather info from 
 Install the Raspbian OS as per the user guide here: http://www.raspberrypi.org/help/noobs-setup/
 
 Configure the wireless
+
 	sudo nano /etc/network/interfaces
 
 To configure you wireless network you want to modify the file such that it looks like the following:
