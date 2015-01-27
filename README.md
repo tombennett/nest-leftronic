@@ -8,6 +8,7 @@ Install the Raspbian OS as per the user guide here: http://www.raspberrypi.org/h
 
 Configure the wireless
 	sudo nano /etc/network/interfaces
+
 To configure you wireless network you want to modify the file such that it looks like the following:
 	auto lo
 	iface lo inet loopback
@@ -19,6 +20,7 @@ To configure you wireless network you want to modify the file such that it looks
 	iface wlan0 inet dhcp
 	   wpa-ssid "Your Network SSID"
 	   wpa-psk "Your Password"
+
 At this point everything is configured – all we need to do is reload the network interfaces. This can be done by running the following command (warning: if you are connected using a remote connection it will disconnect now):
 	sudo service networking reload
 
